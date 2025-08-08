@@ -1,0 +1,33 @@
+import random
+
+def game(guesses):
+
+    guesses_left = guesses
+    number_gen = random.randint(1, 100)
+    player_guess = int(input("What is your guess?\n"))
+
+    while player_guess != number_gen and guesses_left > 1:
+
+        guesses_left -= 1
+
+        if player_guess > number_gen:
+            print("Too High!\n")
+        if player_guess < number_gen:
+            print("Too Low!\n")
+
+        player_guess = int(input("Guess again!\n"))
+
+    if player_guess == number_gen:
+        print("You win!")
+
+    if guesses_left == 1:
+        print(f"You lose! The answer was {number_gen}.")
+
+start_game = input("Would you like to play a guessing game? Y or N\n")
+
+if start_game == "Y":
+    difficulty = input("Easy (10 guesses) or Hard (5 guesses)?\n")
+    if difficulty == "Easy":
+        game(10)
+    if difficulty == "Hard":
+        game(5)
